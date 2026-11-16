@@ -1,0 +1,665 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#071330,#132d68,#40166d);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-2;
+}
+
+.stars::before,
+.stars::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    box-shadow:
+    50px 80px white,
+    140px 250px white,
+    280px 60px white,
+    390px 170px white,
+    520px 300px white,
+    640px 110px white,
+    790px 230px white,
+    920px 90px white,
+    1080px 250px white,
+    1200px 60px white;
+    animation:twinkle 3s infinite alternate;
+}
+
+.stars::after{
+    transform:scale(1.5);
+    animation-duration:6s;
+}
+
+@keyframes twinkle{
+
+from{
+opacity:.3;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+}
+
+.card{
+
+width:380px;
+height:500px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(18px);
+
+border-radius:25px;
+
+padding:40px;
+
+box-shadow:
+0 25px 50px rgba(0,0,0,.4);
+
+transition:1s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+
+height:250px;
+
+background:rgba(255,255,255,.15);
+
+border-radius:50%;
+
+top:-80px;
+
+right:-80px;
+
+}
+
+.front,
+.inside{
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+height:100%;
+
+text-align:center;
+
+transition:1s;
+
+}
+
+.inside{
+
+display:none;
+
+}
+
+.envelope{
+
+font-size:90px;
+
+margin-bottom:25px;
+
+animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
+
+}
+
+h1{
+
+font-size:36px;
+
+margin-bottom:20px;
+
+}
+
+h2{
+
+font-size:30px;
+
+margin-bottom:20px;
+
+}
+
+p{
+
+line-height:1.8;
+
+margin-bottom:20px;
+
+font-size:17px;
+
+}
+
+button{
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:50px;
+
+background:linear-gradient(45deg,#ff7b00,#ff00aa);
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.4s;
+
+box-shadow:0 10px 20px rgba(0,0,0,.3);
+
+}
+
+button:hover{
+
+transform:translateY(-5px) scale(1.05);
+
+box-shadow:0 15px 25px rgba(0,0,0,.4);
+
+}
+
+button:active{
+
+transform:scale(.96);
+
+}
+
+#overlay{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:black;
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+z-index:100;
+
+}
+
+.glitch{
+
+font-size:50px;
+
+font-weight:bold;
+
+color:red;
+
+letter-spacing:4px;
+
+animation:glitch .3s infinite;
+
+margin-bottom:20px;
+
+}
+
+@keyframes glitch{
+
+0%{
+
+transform:translate(-2px,2px);
+
+}
+
+50%{
+
+transform:translate(3px,-2px);
+
+}
+
+100%{
+
+transform:translate(-3px,1px);
+
+}
+
+}
+
+#countdown{
+
+font-size:90px;
+
+font-weight:bold;
+
+color:white;
+
+}
+
+#futureBox{
+
+display:none;
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+justify-content:center;
+
+align-items:center;
+
+background:rgba(0,0,0,.85);
+
+z-index:200;
+
+}
+
+.futureCard{
+
+width:420px;
+
+padding:40px;
+
+background:linear-gradient(145deg,#171742,#3b1879);
+
+border-radius:20px;
+
+text-align:center;
+
+box-shadow:0 0 40px #8d6dff;
+
+animation:appear .8s;
+
+}
+
+@keyframes appear{
+
+from{
+
+opacity:0;
+
+transform:scale(.6);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+#finalScene{
+
+display:none;
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(#020111,#091d42,#1d4b99);
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+padding:20px;
+
+z-index:300;
+
+}
+
+.message{
+
+max-width:700px;
+
+}
+
+#typing{
+
+margin-top:30px;
+
+font-size:10px;
+
+line-height:1;
+
+min-height:180px;
+
+}
+
+#restart{
+
+margin-top:40px;
+
+}
+
+.futureCard h1{
+
+animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+
+text-shadow:0 0 10px white;
+
+}
+
+to{
+
+text-shadow:
+
+0 0 25px #00f0ff,
+
+0 0 45px #00f0ff;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.card{
+
+width:92%;
+
+height:auto;
+
+padding:30px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+h2{
+
+font-size:24px;
+
+}
+
+p{
+
+font-size:16px;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.futureCard{
+
+width:90%;
+
+}
+
+#typing{
+
+font-size:10px;
+
+}
+
+}
+
+.confetti{
+
+position:fixed;
+
+width:10px;
+
+height:10px;
+
+top:-20px;
+
+animation:fall linear forwards;
+
+z-index:999;
+
+}
+
+@keyframes fall{
+
+to{
+
+transform:translateY(110vh) rotate(720deg);
+
+}
+
+}
+
+#finalScene {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background:
+        radial-gradient(circle at top left, #ffb6c1 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #9b6b9e 0%, transparent 40%),
+        linear-gradient(135deg, #160d2b, #44204e, #180e32);
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    z-index: 300;
+}
+
+#finalScene::before {
+    content: "✦     ♡      ✧       ✦       ♡";
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    text-align: center;
+    color: #ffe4a8;
+    font-size: 30px;
+    letter-spacing: 25px;
+    opacity: .8;
+    animation: floatDecor 4s ease-in-out infinite alternate;
+}
+
+#finalScene::after {
+    content: "♡       ✧       ♡       ✦";
+    position: absolute;
+    bottom: 8%;
+    width: 100%;
+    text-align: center;
+    color: #ffd6e7;
+    font-size: 30px;
+    letter-spacing: 25px;
+    animation: floatDecor 5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatDecor {
+    from { transform: translateY(0); opacity: .4; }
+    to { transform: translateY(-20px); opacity: 1; }
+}
+
+.message {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 680px;
+    padding: 55px 45px;
+
+    background:
+        linear-gradient(145deg, #fff9ef, #ffe9e2, #fff4e8);
+
+    color: #593b50;
+    border-radius: 8px 25px 8px 25px;
+
+    box-shadow:
+        0 0 0 8px rgba(255,255,255,.08),
+        0 25px 70px rgba(0,0,0,.5),
+        0 0 50px rgba(255,190,210,.3);
+
+    animation: letterReveal 1.3s ease;
+}
+
+.message::before {
+    content: "♡";
+    position: absolute;
+    top: 12px;
+    right: 22px;
+    font-size: 35px;
+    color: #e99ab4;
+    animation: heartbeat 2s infinite;
+}
+
+.message::after {
+    content: "With love ✦";
+    position: absolute;
+    bottom: 18px;
+    right: 25px;
+    font-size: 13px;
+    font-style: italic;
+    color: #b47a94;
+}
+
+@keyframes letterReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(80px) rotate(-3deg) scale(.85);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0) scale(1);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+}
+
+.message h1 {
+    color: #a34c76;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-shadow: 0 3px 10px rgba(163,76,118,.15);
+}
+
+.message h1::after {
+    content: "✦ ───── ♡ ───── ✦";
+    display: block;
+    font-size: 15px;
+    color: #d68aa6;
+    margin-top: 15px;
+}
+
+#typing {
+    color: #63465b;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    margin-top: 25px;
+    min-height: 180px;
+    text-shadow: none;
+}
+
+#restart {
+    margin-top: 35px;
+    background: linear-gradient(45deg, #bd648d, #e89ab4, #bd648d);
+    color: white;
+    border: 2px solid #fff0f5;
+    box-shadow: 0 8px 25px rgba(189,100,141,.35);
+    letter-spacing: 1px;
+}
+
+#restart:hover {
+    transform: translateY(-5px) scale(1.06);
+    box-shadow: 0 12px 30px rgba(189,100,141,.5);
+}
+
+@media(max-width:768px) {
+    #finalScene {
+        padding: 25px 15px;
+    }
+
+    .message {
+        padding: 45px 25px;
+    }
+
+    .message h1 {
+        font-size: 28px;
+    }
+
+    #typing {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+}
